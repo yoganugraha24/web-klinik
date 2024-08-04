@@ -44,7 +44,9 @@ class DaftarController extends Controller
             'poli_id' => 'required',
             'keluhan' => 'required',
         ]);
+        $poli = \App\Models\Poli::findOrFail($requestData['poli_id']);
         $daftar = new Daftar;
+        $daftar->biaya = $poli->biaya;
         $daftar->fill($requestData);
         $daftar->save();
         flash('Data berhasil disimpan')->success();

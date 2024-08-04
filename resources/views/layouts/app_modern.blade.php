@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ $title ?? '' }} {{ env('APP_NAME') }}</title>
-  <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/icon.png" />
   <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
   
 </head>
@@ -20,7 +20,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="/modern/src/assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="/modern/src/assets/images/logos/klinik.svg" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -81,6 +81,24 @@
                 <span class="hide-menu">Pendaftaran Pasien</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link {{ request()->is('laporan-pasien') ? 'active' : '' }}" href="/laporan-pasien/create" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Laporan Data Pasien</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link {{ request()->is('laporan-daftar') ? 'active' : '' }}"
+                href="/laporan-daftar/create" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Laporan Data Pendaftaran</span>
+              </a>
+            </li>
+              
             
           </ul>
         </nav>
@@ -100,12 +118,7 @@
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="ti ti-bell-ringing"></i>
-                <div class="notification bg-primary rounded-circle"></div>
-              </a>
-            </li>
+            
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -116,18 +129,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a>
+                    
                     <a href="/logout" 
                     class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
@@ -136,14 +138,19 @@
             </ul>
           </div>
         </nav>
+        
       </header>
+
       <!--  Header End -->
+      <!-- Copyright -->
+    
       <div class="container-fluid">
         @include('flash::message')
         @yield('content')
       </div>
     </div>
   </div>
+  
   <script src="/modern/src/assets/libs/jquery/dist/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
